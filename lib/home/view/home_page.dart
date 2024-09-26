@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos_bloc/home/cubit/home_cubit.dart';
 
+import 'package:flutter_todos_bloc/todo_overview/view/todo_overview_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -25,15 +27,16 @@ class HomeView extends StatelessWidget {
       body: IndexedStack(
         index: selectedTab.index,
         children: const [
-          TodosOverviewPage(),
-          StatsPage(),
+          TodoOverviewPage(),
+          // StatsPage(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         key: const Key('homeView_addTodo_floatingActionButton'),
-        onPressed: () => Navigator.of(context).push(EditTodoPage.route()),
+        onPressed: () {},
+        //  () => Navigator.of(context).push(EditTodoPage.route()),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
@@ -42,12 +45,12 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _HomeTabButton(
-              groupValue: selectedTab,
+              selectedValue: selectedTab,
               value: HomeTabs.todos,
               icon: const Icon(Icons.list_rounded),
             ),
             _HomeTabButton(
-              groupValue: selectedTab,
+              selectedValue: selectedTab,
               value: HomeTabs.stats,
               icon: const Icon(Icons.show_chart_rounded),
             ),
@@ -60,12 +63,12 @@ class HomeView extends StatelessWidget {
 
 class _HomeTabButton extends StatelessWidget {
   const _HomeTabButton({
-    required this.groupValue,
+    required this.selectedValue,
     required this.value,
     required this.icon,
   });
 
-  final HomeTabs groupValue;
+  final HomeTabs selectedValue;
   final HomeTabs value;
   final Widget icon;
 
@@ -74,8 +77,9 @@ class _HomeTabButton extends StatelessWidget {
     return IconButton(
       onPressed: () => context.read<HomeCubit>().setTab(value),
       iconSize: 32,
-      color:
-          groupValue != value ? null : Theme.of(context).colorScheme.secondary,
+      color: selectedValue != value
+          ? null
+          : Theme.of(context).colorScheme.secondary,
       icon: icon,
     );
   }

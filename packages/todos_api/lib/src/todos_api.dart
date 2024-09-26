@@ -1,4 +1,4 @@
-import '../todos_api.dart';
+import 'package:todos_api/todos_api.dart';
 
 /// {@template todos_api}
 /// The interface and models for an API providing access to todos.

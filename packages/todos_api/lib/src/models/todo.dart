@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -29,9 +28,6 @@ class Todo extends Equatable {
   static Todo fromJson(JsonMap json) => _$TodoFromJson(json);
   JsonMap toJson() => _$TodoToJson(this);
 
-  @override
-  List<Object?> get props => [id, title, descreption, isComplete];
-
   Todo copyWith({
     String? id,
     String? title,
@@ -45,4 +41,7 @@ class Todo extends Equatable {
       isComplete: isComplete ?? this.isComplete,
     );
   }
+
+  @override
+  List<Object?> get props => [id, title, descreption, isComplete];
 }
