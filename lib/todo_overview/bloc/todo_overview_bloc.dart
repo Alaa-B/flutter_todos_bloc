@@ -30,7 +30,7 @@ class TodoOverviewBloc extends Bloc<TodoOverviewEvent, TodoOverviewState> {
       ),
     );
     await emit.forEach<List<Todo>>(
-      _todosRepository.getTods(),
+      _todosRepository.getTodos(),
       onData: (data) => state.copyWith(
         status: () => TodoOverviewStatus.success,
         todos: () => data,
@@ -58,7 +58,7 @@ class TodoOverviewBloc extends Bloc<TodoOverviewEvent, TodoOverviewState> {
         lastDeletedTodo: () => event.todo,
       ),
     );
-    await _todosRepository.delelteTodos(event.todo.id);
+    await _todosRepository.deleteTodos(event.todo.id);
   }
 
   Future<void> _onUndoDeletionRequested(

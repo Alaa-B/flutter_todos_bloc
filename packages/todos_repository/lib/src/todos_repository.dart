@@ -9,8 +9,8 @@ class TodosRepository {
   const TodosRepository({required TodosApi todosApi}) : _todosApi = todosApi;
   final TodosApi _todosApi;
 
-  Stream<List<Todo>> getTods() => _todosApi.getsTodo();
-  Future<void> delelteTodos(String id) => _todosApi.deleteTodo(id);
+  Stream<List<Todo>> getTodos() => _todosApi.getsTodo();
+  Future<void> deleteTodos(String id) => _todosApi.deleteTodo(id);
   Future<void> saveTodo(Todo todo) => _todosApi.saveToDo(todo);
   Future<int> clearCompleted() => _todosApi.clearCompleted();
   Future<int> completeAll({required bool isCompleted}) =>

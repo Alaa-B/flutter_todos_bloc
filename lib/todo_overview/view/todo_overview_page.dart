@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos_bloc/l10n/l10n.dart';
 import 'package:flutter_todos_bloc/todo_overview/bloc/todo_overview_bloc.dart';
-import 'package:flutter_todos_bloc/todo_overview/widgets/todo_filter_Button.dart';
+import 'package:flutter_todos_bloc/todo_overview/widgets/todo_filter_button.dart';
 import 'package:flutter_todos_bloc/todo_overview/widgets/todo_list_tile.dart';
 import 'package:flutter_todos_bloc/todo_overview/widgets/todo_options_button.dart';
 import 'package:todos_repository/todos_repository.dart';
@@ -119,9 +119,10 @@ class TodoOverviewView extends StatelessWidget {
                             .read<TodoOverviewBloc>()
                             .add(TodoOverviewTodoDeleted(todo: todo));
                       },
-                      // ToDo: create Edit todo page.
-                      onTap: () => Navigator.of(context)
-                          .push(EditTodoPage.route(todo: todo)),
+
+                      // TODO: create Edit todo page.
+                      // onTap: () => Navigator.of(context)
+                      //     .push(EditTodoPage.route(todo: todo)),
                     ),
                 ],
               ),
