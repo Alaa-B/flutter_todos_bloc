@@ -9,7 +9,7 @@ import 'package:todos_repository/todos_repository.dart';
 class EditTodoPage extends StatelessWidget {
   const EditTodoPage({super.key});
 
-  static Route<void> route(Todo? initialTodo) {
+  static Route<void> route({Todo? initialTodo}) {
     return MaterialPageRoute(
       fullscreenDialog: true,
       builder: (ctx) => BlocProvider(
@@ -120,7 +120,6 @@ class _DescriptionField extends StatelessWidget {
     return TextFormField(
       key: const Key('EditTodo_descriptionKey'),
       initialValue: state.description,
-      obscureText: true,
       decoration: InputDecoration(
         enabled: !state.status.isLoadingOrSuccess,
         labelText: l10n.editTodoDescriptionLabel,

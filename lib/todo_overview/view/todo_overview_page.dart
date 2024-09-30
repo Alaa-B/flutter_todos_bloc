@@ -120,8 +120,8 @@ class TodoOverviewView extends StatelessWidget {
                             .read<TodoOverviewBloc>()
                             .add(TodoOverviewTodoDeleted(todo: todo));
                       },
-                      onTap: () =>
-                          Navigator.of(context).push(EditTodoPage.route(todo)),
+                      onTap: () => Navigator.of(context)
+                          .push(EditTodoPage.route(initialTodo: todo)),
                     ),
                 ],
               ),

@@ -12,9 +12,7 @@ class StatsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           StatsBloc(todosRepository: context.read<TodosRepository>())
-            ..add(
-              const StatsSubscriptionRequested(),
-            ),
+            ..add(const StatsSubscriptionRequested()),
       child: const StatsView(),
     );
   }
@@ -28,11 +26,13 @@ class StatsView extends StatelessWidget {
     final l10n = context.l10n;
     final textTheme = Theme.of(context).textTheme;
     final statsState = context.watch<StatsBloc>().state;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.statsAppBarTitle),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ListTile(
             key: const Key('statsView_completedTodos_listTile'),
