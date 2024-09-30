@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todos_bloc/edit_todo/view/edit_todo_page.dart';
 import 'package:flutter_todos_bloc/l10n/l10n.dart';
 import 'package:flutter_todos_bloc/todo_overview/bloc/todo_overview_bloc.dart';
 import 'package:flutter_todos_bloc/todo_overview/widgets/todo_filter_button.dart';
@@ -42,7 +43,7 @@ class TodoOverviewView extends StatelessWidget {
               return previous.status != current.status;
             },
             listener: (context, state) {
-              if (state.status == TodoOverviewStatus.filure) {
+              if (state.status == TodoOverviewStatus.failure) {
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
                   ..showSnackBar(
@@ -61,14 +62,14 @@ class TodoOverviewView extends StatelessWidget {
                   current.lastDeletedTodo != null;
             },
             listener: (context, state) {
-              final lastDeleltedTodo = state.lastDeletedTodo!;
+              final lastDeletedTodo = state.lastDeletedTodo!;
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(
                   SnackBar(
                     content: Text(
                       l10n.todosOverviewTodoDeletedSnackbarText(
-                        lastDeleltedTodo.title,
+                        lastDeletedTodo.title,
                       ),
                     ),
                     action: SnackBarAction(
@@ -114,15 +115,13 @@ class TodoOverviewView extends StatelessWidget {
                                   isCompleted: isCompleted,
                                 ),
                               ),
-                      onDissmissed: (_) {
+                      onDismissed: (_) {
                         context
                             .read<TodoOverviewBloc>()
                             .add(TodoOverviewTodoDeleted(todo: todo));
                       },
-
-                      // TODO: create Edit todo page.
-                      // onTap: () => Navigator.of(context)
-                      //     .push(EditTodoPage.route(todo: todo)),
+                      onTap: () =>
+                          Navigator.of(context).push(EditTodoPage.route(todo)),
                     ),
                 ],
               ),

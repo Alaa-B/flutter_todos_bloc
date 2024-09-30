@@ -12,7 +12,7 @@ class Todo extends Equatable {
   Todo({
     required this.title,
     String? id,
-    this.descreption = '',
+    this.description = '',
     this.isComplete = false,
   })  : assert(
           id == null || id.isNotEmpty,
@@ -22,7 +22,7 @@ class Todo extends Equatable {
 
   final String id;
   final String title;
-  final String descreption;
+  final String description;
   final bool isComplete;
 
   static Todo fromJson(JsonMap json) => _$TodoFromJson(json);
@@ -31,17 +31,17 @@ class Todo extends Equatable {
   Todo copyWith({
     String? id,
     String? title,
-    String? descreption,
+    String? description,
     bool? isComplete,
   }) {
     return Todo(
       id: id ?? this.id,
       title: title ?? this.title,
-      descreption: descreption ?? this.descreption,
+      description: description ?? this.description,
       isComplete: isComplete ?? this.isComplete,
     );
   }
 
   @override
-  List<Object?> get props => [id, title, descreption, isComplete];
+  List<Object?> get props => [id, title, description, isComplete];
 }

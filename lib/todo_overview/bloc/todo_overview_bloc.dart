@@ -36,7 +36,7 @@ class TodoOverviewBloc extends Bloc<TodoOverviewEvent, TodoOverviewState> {
         todos: () => data,
       ),
       onError: (_, __) => state.copyWith(
-        status: () => TodoOverviewStatus.filure,
+        status: () => TodoOverviewStatus.failure,
       ),
     );
   }

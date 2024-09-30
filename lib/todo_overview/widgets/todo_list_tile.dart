@@ -4,14 +4,14 @@ import 'package:todos_repository/todos_repository.dart';
 class TodoListTile extends StatelessWidget {
   const TodoListTile({
     required this.todo,
-    this.onDissmissed,
+    this.onDismissed,
     this.onDismissComplete,
     this.onTap,
     super.key,
   });
 
   final Todo todo;
-  final DismissDirectionCallback? onDissmissed;
+  final DismissDirectionCallback? onDismissed;
   final ValueChanged<bool>? onDismissComplete;
   final VoidCallback? onTap;
 
@@ -22,7 +22,7 @@ class TodoListTile extends StatelessWidget {
 
     return Dismissible(
       key: Key('dismissible_key${todo.id}'),
-      onDismissed: onDissmissed,
+      onDismissed: onDismissed,
       child: ListTile(
         onTap: onTap,
         title: Text(
@@ -37,7 +37,7 @@ class TodoListTile extends StatelessWidget {
                 ),
         ),
         subtitle: Text(
-          todo.descreption,
+          todo.description,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),

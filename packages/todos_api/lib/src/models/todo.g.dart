@@ -9,13 +9,13 @@ part of 'todo.dart';
 Todo _$TodoFromJson(Map<String, dynamic> json) => Todo(
       title: json['title'] as String,
       id: json['id'] as String?,
-      descreption: json['descreption'] as String? ?? '',
+      description: json['description'] as String? ?? '',
       isComplete: json['isComplete'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$TodoToJson(Todo instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'descreption': instance.descreption,
+      'description': instance.description,
       'isComplete': instance.isComplete,
     };
